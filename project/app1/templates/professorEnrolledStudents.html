@@ -1,0 +1,44 @@
+{% extends 'home.html' %}
+
+{% block professorEnrolledStudents %}
+<style>
+    a, h2 {
+      color: #3c71c0;
+      text-decoration: none;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+  <h2>Students enrolled in {{ subject.name }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>E-mail</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>{{ student.user.first_name }}</td>
+          <td>{{ student.user.last_name }}</td>
+          <td>{{ student.user.email }}</td>
+          <td>{{ student.status.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

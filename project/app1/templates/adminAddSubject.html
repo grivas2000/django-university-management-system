@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+
+{% block adminAddSubject %}
+<style>
+    a {
+      color: #3c71c0;
+      text-decoration: none;
+    }
+    h1 {
+      color: #3c71c0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+</style>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'menu_admin' %}">Home</a>
+<a href="{% url 'subjects_list' %}">Subjects</a>
+<a href="{% url 'students_list' %}">Students</a>
+<a href="{% url 'professors_list' %}">Professors</a><br><hr>
+
+<h1>Add a new subject</h1>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td><label for="new_name">Name:</label></td>
+            <td><input type="text" name="new_name"></td>
+        </tr>
+        <tr>
+            <td><label for="new_code">Code:</label></td>
+            <td><input type="text" name="new_code"></td>
+        </tr>
+        <tr>
+            <td><label for="new_program">Program:</label></td>
+            <td><input type="text" name="new_program"></td>
+        </tr>
+        <tr>
+            <td><label for="new_ects">ECTS:</label></td>
+            <td><input type="number" name="new_ects"></td>
+        </tr>
+        <tr>
+            <td><label for="new_sem_reg">Semester - Regular:</label></td>
+            <td><input type="number" name="new_sem_reg"></td>
+        </tr>
+        <tr>
+            <td><label for="new_sem_irr">Semester - Irregular:</label></td>
+            <td><input type="number" name="new_sem_irr"></td>
+        </tr>
+        <tr>
+            <td><label for="new_elective">Elective:</label></td>
+            <td><input type="text" name="new_elective"></td>
+        </tr>
+        <tr>
+            <td><label for="new_professor">Professor:</label></td>
+            <td>
+                <select name="new_professor">
+                    {% for professor in professors %}
+                        <option value="{{ professor.username }}">
+                            {{ professor.username }} - {{ professor.first_name }} {{ professor.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type="submit" value="Add">
+</form>
+{% endblock %}

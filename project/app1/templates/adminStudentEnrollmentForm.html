@@ -1,0 +1,111 @@
+{% extends 'home.html' %}
+
+{% block adminStudentEnrollmentForm %}
+<style>
+    a {
+      color: #3c71c0;
+      text-decoration: none;
+    }
+    h3 {
+      color: #3c71c0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+</style>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'menu_admin' %}">Home</a>
+<a href="{% url 'subjects_list' %}">Subjects</a>
+<a href="{% url 'students_list' %}">Students</a>
+<a href="{% url 'professors_list' %}">Professors</a><br><hr>
+
+<h1>Enrollment Form for student {{ student.first_name }} {{ student.last_name }}</h1>
+
+{% for semester, subjects in semesters.items %}
+  {% if subjects.enrolled_subjects or subjects.unenrolled_subjects %}
+    <h3>Semester {{ semester }}</h3>
+    {% if subjects.enrolled_subjects %}
+      <h4>Enrolled Subjects</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Subject Name</th>
+            <th>Subject Code</th>
+            <th>Program</th>
+            <th>ECTS</th>
+            <th>Elective</th>
+            <th>Professor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for subject in subjects.enrolled_subjects %}
+            <tr>
+              <td>{{ subject.name }}</td>
+              <td>{{ subject.code }}</td>
+              <td>{{ subject.program }}</td>
+              <td>{{ subject.ects }}</td>
+              <td>{{ subject.elective }}</td>
+              <td>{{ subject.professor.first_name }} {{ subject.professor.last_name }}</td>
+              <td>
+                {% if subject.enrollment_status == 'Passed' or subject.enrollment_status == 'Failed' %}
+                {{ subject.enrollment_status }}
+              {% else %}
+                <form action="{% url 'unenroll_subject_admin' student_id=student.id subject_id=subject.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit">Unenroll</button>
+                </form>
+              {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br>
+    {% endif %}
+    {% if subjects.unenrolled_subjects %}
+      <h4>Unenrolled Subjects</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Subject Name</th>
+            <th>Subject Code</th>
+            <th>Program</th>
+            <th>ECTS</th>
+            <th>Elective</th>
+            <th>Professor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for subject in subjects.unenrolled_subjects %}
+            <tr>
+              <td>{{ subject.name }}</td>
+              <td>{{ subject.code }}</td>
+              <td>{{ subject.program }}</td>
+              <td>{{ subject.ects }}</td>
+              <td>{{ subject.elective }}</td>
+              <td>{{ subject.professor.first_name }} {{ subject.professor.last_name }}</td>
+              <td>
+                <form action="{% url 'enroll_subject_admin' student_id=student.id subject_id=subject.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit">Enroll</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br><br><br><br><br>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% endblock %}

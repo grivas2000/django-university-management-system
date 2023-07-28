@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+
+{% block professorSubjects %}
+<style>
+  a {
+    color: #3c71c0;
+    text-decoration: none;
+  }
+  h2 {
+    color: #3c71c0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'menu_professor' %}">Home</a>
+<a href="{% url 'professor_subjects' %}">Subjects</a><br><hr>
+
+<h2>Overview of the Subject List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Subject Name</th>
+      <th>Subject Code</th>
+      <th>Program</th>
+      <th>ECTS</th>
+      <th>Elective</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for subject in subjects %}
+      <tr>
+        <td>{{ subject.name }}</td>
+        <td>{{ subject.code }}</td>
+        <td>{{ subject.program }}</td>
+        <td>{{ subject.ects }}</td>
+        <td>{{ subject.elective }}</td>
+        <td><a href="{% url 'view_students' subject.id %}">All Students</a></td>
+        <td><a href="{% url 'view_students_failed' subject.id %}">Failed to Pass</a></td>
+        <td><a href="{% url 'view_students_enrolled' subject.id %}">Enrolled</a></td>
+        <td><a href="{% url 'view_students_passed' subject.id %}">Passed</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

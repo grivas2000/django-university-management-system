@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+
+{% block adminProfessors %}
+<style>
+    a {
+      color: #3c71c0;
+      text-decoration: none;
+    }
+    h1 {
+      color: #3c71c0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+</style>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'menu_admin' %}">Home</a>
+<a href="{% url 'subjects_list' %}">Subjects</a>
+<a href="{% url 'students_list' %}">Students</a>
+<a href="{% url 'professors_list' %}">Professors</a><br><hr>
+
+<h1>Professor Administration</h1>
+<a href="{% url 'add_professor' %}">Add New Professor</a><br><br>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+  {% for professor in professors %}
+    <tr>
+      <td>{{ professor.first_name }}</td>
+      <td>{{ professor.last_name }}</td>
+      <td>{{ professor.username }}</td>
+      <td>{{ professor.email }}</td>
+      <td>
+        <a href="{% url 'professor_update' professor.id %}">Update</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

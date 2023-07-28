@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+
+{% block login %}
+<style>
+  a, h2 {
+    color: #3c71c0;
+    text-decoration: none;
+  }
+</style>
+<h2>Login</h2>
+<form method="post">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" value="Login">
+</form>
+
+<br>Don't have an account? <a href="{% url 'register' %}">Register Now</a>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'home.html' %}
+
+{% block adminSubjects %}
+<style>
+    a {
+      color: #3c71c0;
+      text-decoration: none;
+    }
+    h1 {
+      color: #3c71c0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+</style>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'menu_admin' %}">Home</a>
+<a href="{% url 'subjects_list' %}">Subjects</a>
+<a href="{% url 'students_list' %}">Students</a>
+<a href="{% url 'professors_list' %}">Professors</a><br><hr>
+
+<h1>Subject Administration</h1>
+<a href="{% url 'add_subject' %}">Add New Subject</a><br><br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Program</th>
+    <th>ECTS</th>
+    <th>Semester - Regular</th>
+    <th>Semester - Irregular</th>
+    <th>Elective</th>
+    <th>Professor</th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for subject in subjects %}
+    <tr>
+      <td>{{ subject.name }}</td>
+      <td>{{ subject.code }}</td>
+      <td>{{ subject.program }}</td>
+      <td>{{ subject.ects }}</td>
+      <td>{{ subject.sem_reg }}</td>
+      <td>{{ subject.sem_irr }}</td>
+      <td>{{ subject.elective }}</td>
+      <td>{{ subject.professor.first_name }} {{ subject.professor.last_name }}</td>
+      <td>
+        <a href="{% url 'subject_update' subject.id %}">Update</a>
+      </td>
+      <td>
+        <a href="{% url 'students_subject' subject.id %}">View Student List</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}
