@@ -35,7 +35,7 @@ Students enjoy access to information concerning their own courses and academic s
 
 ## Building and Running the Application
 
-To build and run the application, ensure you have Python, Django and SQLite3 installed on your machine. Then, proceed with the following steps:
+To build and run the application, ensure you have Python and SQLite3 installed on your machine. Then, proceed with the following steps:
 
 1. Clone the repository from GitHub.
 2. Navigate to the project's root directory.
