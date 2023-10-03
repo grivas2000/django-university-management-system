@@ -2,7 +2,7 @@
 
 ## Description
 
-Django University Management System, built on the Django framework with SQLite3, serves as a robust platform for managing university courses, students, and professors. With tailored features and access levels, it caters to various user roles, including administrators, professors and students.
+Django University Management System, built on the Django framework with SQLite3, serves as a robust platform for managing university courses, students and professors. With tailored features and access levels, it caters to various user roles, including administrators, professors and students.
 
 ## User Roles and Features
 
@@ -10,8 +10,8 @@ Django University Management System, built on the Django framework with SQLite3,
 
 Admins wield complete control over the application and its data. Their capabilities encompass:
 
-- Viewing all student, professor, and course details.
-- Adding, modifying, or removing student, professor and course records.
+- Viewing all student, professor and course details.
+- Adding, modifying or removing student, professor and course records.
 - Assigning or unassigning professors to courses.
 - Enrolling or unenrolling students in courses.
 - Gaining insights into which professors are assigned to specific courses and which students are enrolled in each course.
@@ -55,6 +55,6 @@ To set up your initial superuser/admin:
 2. Follow the prompts to specify your username, email and password.
 3. Access the admin interface by navigating to `localhost:8000/admin` and logging in with your superuser credentials.
 
-I've included a fixture file named `'subjects.json'` for your convenience in populating your application with initial data. To load it:
+I've included two fixture files named `'fixture.json'` and `'fixture2.json'` for your convenience in populating your application with initial data. To load it:
 
-- Run `python manage.py loaddata subjects.json` from the project's root directory via the terminal.
+- Run `python manage.py loaddata fixture.json fixture2.json` from the project's root directory via the terminal.
