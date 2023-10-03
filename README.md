@@ -55,6 +55,6 @@ To set up your initial superuser/admin:
 2. Follow the prompts to specify your username, email and password.
 3. Access the admin interface by navigating to `localhost:8000/admin` and logging in with your superuser credentials.
 
-I've included two fixture files named `'fixture.json'` and `'fixture2.json'` for your convenience in populating your application with initial data. To load it:
+I've included two fixture files named `'fixtures.json'` and `'fixtures2.json'` for your convenience in populating your application with initial data. To load it:
 
-- Run `python manage.py loaddata fixture.json fixture2.json` from the project's root directory via the terminal.
+- Run `python manage.py loaddata fixtures.json fixtures2.json` from the project's root directory via the terminal.
