@@ -33,7 +33,7 @@ Students enjoy access to information concerning their own courses and academic s
 - Checking their pass or fail status for courses.
 - Enrolling or unenrolling themselves from courses.
 
-## Building and Running the Application
+## Setup
 
 To build and run the application, ensure you have Python and SQLite3 installed on your machine. Then, proceed with the following steps:
 
@@ -44,16 +44,6 @@ To build and run the application, ensure you have Python and SQLite3 installed o
 5. Start the Django development server with `python manage.py runserver`.
 
 You can access the application at `localhost:8000` in your web browser.
-
-## Getting Started
-
-Begin your journey with this application by logging in. The login page awaits your credentials, granting access to your specific role and related features.
-
-To set up your initial superuser/admin:
-
-1. Execute the command `python manage.py createsuperuser` from the project's root directory in your terminal.
-2. Follow the prompts to specify your username, email and password.
-3. Access the admin interface by navigating to `localhost:8000/admin` and logging in with your superuser credentials.
 
 I've included two fixture files named `'fixtures.json'` and `'fixtures2.json'` for your convenience in populating your application with initial data. To load it:
 
