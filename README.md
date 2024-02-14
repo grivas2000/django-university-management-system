@@ -1,8 +1,8 @@
-# Django University Management System
+# University Management System
 
 ## Description
 
-Django University Management System, built on the Django framework with SQLite3, serves as a robust platform for managing university courses, students and professors. With tailored features and access levels, it caters to various user roles, including administrators, professors and students.
+University Management System, built on the Django framework with SQLite3, serves as a robust platform for managing university courses, students and professors. With tailored features and access levels, it caters to various user roles, including administrators, professors and students.
 
 ## User Roles and Features
 
