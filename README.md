@@ -6,15 +6,19 @@ University Management System, built on the Django framework with SQLite3, serves
 
 ## User Roles and Features
 
-### 1. Administrator
+![Screenshot (15)](https://github.com/deabocina/django-university-management-system/assets/140092973/52e9f343-ae26-4a65-83dd-4191a3af2248)
 
-Admins wield complete control over the application and its data. Their capabilities encompass:
+### 1. Student
 
-- Viewing all student, professor and course details.
-- Adding, modifying or removing student, professor and course records.
-- Assigning or unassigning professors to courses.
-- Enrolling or unenrolling students in courses.
-- Gaining insights into which professors are assigned to specific courses and which students are enrolled in each course.
+Students enjoy access to information concerning their own courses and academic status. Their capabilities consist of:
+
+- Viewing the courses they are currently enrolled in.
+- Checking their pass or fail status for courses.
+- Enrolling or unenrolling themselves from courses.
+- Filtering courses based on ECTS points and semester in which they are held.
+
+![Screenshot (16)](https://github.com/deabocina/django-university-management-system/assets/140092973/ca2cb68e-2394-4575-8d27-d34dc0a46b83)
+![Screenshot (17)](https://github.com/deabocina/django-university-management-system/assets/140092973/a4e9dc31-70c4-419a-817c-e2cb1330523a)
 
 ### 2. Professor
 
@@ -25,13 +29,22 @@ Professors have access limited to the courses they are assigned to. Their functi
 - Monitoring students' pass or fail statuses for their respective courses.
 - Granting or revoking a student's pass status by providing or removing their signature.
 
-### 3. Student
+![Screenshot (19)](https://github.com/deabocina/django-university-management-system/assets/140092973/93084c4c-4623-43b3-9754-dce32636e5d2)
+![Screenshot (20)](https://github.com/deabocina/django-university-management-system/assets/140092973/33d1c6cb-5f4b-4095-bbc5-822b3c702aa6)
 
-Students enjoy access to information concerning their own courses and academic status. Their capabilities consist of:
+### 3. Administrator
 
-- Viewing the courses they are currently enrolled in.
-- Checking their pass or fail status for courses.
-- Enrolling or unenrolling themselves from courses.
+Admins wield complete control over the application and its data. Their capabilities encompass:
+
+- Viewing all student, professor and course details.
+- Adding, modifying or removing student, professor and course records.
+- Assigning or unassigning professors to courses.
+- Enrolling or unenrolling students in courses.
+- Gaining insights into which professors are assigned to specific courses and which students are enrolled in each course.
+
+![Screenshot (21)](https://github.com/deabocina/django-university-management-system/assets/140092973/017aade5-4d1a-4015-9057-01cdcf411863)
+![Screenshot (23)](https://github.com/deabocina/django-university-management-system/assets/140092973/fad5981a-421e-40ed-b772-e5b412cc7a95)
+![Screenshot (24)](https://github.com/deabocina/django-university-management-system/assets/140092973/8dd6f45a-5b4e-4a34-b77e-5b4524961367)
 
 ## Setup
 
