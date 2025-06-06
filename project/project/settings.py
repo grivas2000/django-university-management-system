@@ -25,8 +25,20 @@ SECRET_KEY = 'django-insecure-$t=7cze9e6joj=^sm4#8g3e@h%6svutt*3nj!#+w!_!rseup$b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "zany-space-invention-9564gx494p53p9jj-8000.app.github.dev"
+]
 
+# Si tu app sirve sobre HTTP:
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:8000",
+     "https://zany-space-invention-9564gx494p53p9jj-8000.app.github.dev/"
+]
+
+CSRF_TRUSTED_ORIGINS = []
+CSRF_COOKIE_SECURE = False
 
 # Application definition
 
@@ -130,3 +142,4 @@ AUTH_USER_MODEL = 'app1.Korisnik'
 LOGIN_REDIRECT_URL = 'myProfile'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
+
