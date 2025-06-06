@@ -3,6 +3,7 @@ from .models import *
 from .forms import RegisterForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
 from .decorators import *
 
 
@@ -36,6 +37,9 @@ def myProfile(request):
 def error(request):
     return render(request, 'error.html')
 
+
+def home(request):
+    return HttpResponse("Bienvenido al sistema de gestión universitaria.")
 
 @student_required
 def studentDashboard(request):
