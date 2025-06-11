@@ -1,7 +1,4 @@
 [
-{"model":"app1.uloge","id":1,"fields":{"role" : "Admin"}},
-{"model":"app1.uloge","id":2,"fields":{"role" : "Profesor"}},
-{"model":"app1.uloge","id":3,"fields":{"role" : "Student"}},
 
 {"model":"app1.statusstudenta","id":1,"fields":{"status" : "None"}},
 {"model":"app1.statusstudenta","id":2,"fields":{"status" : "Izvanredni student"}},
@@ -9,5 +6,186 @@
 
 {"model":"app1.status","id":1,"fields":{"status" : "Prijavljen"}},
 {"model":"app1.status","id":2,"fields":{"status" : "Položen"}},
-{"model":"app1.status","id":3,"fields":{"status" : "Izgubljen potpis"}}
+{"model":"app1.status","id":3,"fields":{"status" : "Izgubljen potpis"}},
+
+{"model": "app1.uloge", "id": 1, "fields": {"role": "Admin"}},
+{"model": "app1.uloge", "id": 2, "fields": {"role": "Professor"}},
+{"model": "app1.uloge", "id": 3, "fields": {"role": "Student"}},
+
+  {
+    "model": "app1.korisnik",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$1q9aNlMUAoDbat42CkdHwQ$Jfa6xZKbSSrIjdfhJnRF4h6XKSyH+H6m+4YQFPRoEjs=", 
+      "last_login": null,
+      "is_superuser": false,
+      "username": "RG04",
+      "first_name": "Ruaina",
+      "last_name": "Guaina",
+      "email": "RG04@ejemplo.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-02T00:00:00Z",
+      "role": 1,          
+      "status": null
+    }
+  },
+
+  {
+    "model": "app1.korisnik",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$EjemploSalt$EjemploHashGeneradoPorDjango", 
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin1",
+      "first_name": "Admin",
+      "last_name": "Uno",
+      "email": "admin1@ejemplo.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,         
+      "status": null      
+    }
+  },
+
+
+  {
+    "model": "app1.korisnik",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$SaltEst$HashEstudiante", 
+      "last_login": null,
+      "is_superuser": false,
+      "username": "estudiante1",
+      "first_name": "María",
+      "last_name": "Alumno",
+      "email": "estudiante1@ejemplo.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-03T00:00:00Z",
+      "role": 3,          
+      "status": null     
+    }
+  },
+   {
+    "model": "app1.korisnik",
+    "pk": 4,
+    "fields": {
+      "username": "profesor4",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor4@example.com",
+      "first_name": "Profesor",
+      "last_name": "Cuatro",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  },
+  {
+    "model": "app1.korisnik",
+    "pk": 5,
+    "fields": {
+      "username": "profesor5",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor5@example.com",
+      "first_name": "Profesor",
+      "last_name": "Cinco",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  },
+  {
+    "model": "app1.korisnik",
+    "pk": 6,
+    "fields": {
+      "username": "profesor6",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor6@example.com",
+      "first_name": "Profesor",
+      "last_name": "Seis",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  },
+  {
+    "model": "app1.korisnik",
+    "pk": 7,
+    "fields": {
+      "username": "profesor7",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor7@example.com",
+      "first_name": "Profesor",
+      "last_name": "Siete",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  },
+  {
+    "model": "app1.korisnik",
+    "pk": 8,
+    "fields": {
+      "username": "profesor8",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor8@example.com",
+      "first_name": "Profesor",
+      "last_name": "Ocho",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  },
+  {
+    "model": "app1.korisnik",
+    "pk": 9,
+    "fields": {
+      "username": "profesor9",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor9@example.com",
+      "first_name": "Profesor",
+      "last_name": "Nueve",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  },
+  {
+    "model": "app1.korisnik",
+    "pk": 10,
+    "fields": {
+      "username": "profesor10",
+      "password": "pbkdf2_sha256$600000$demo$demo",
+      "email": "profesor10@example.com",
+      "first_name": "Profesor",
+      "last_name": "Diez",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z",
+      "role": 2,
+      "status": null
+    }
+  }
 ]
