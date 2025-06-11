@@ -14,13 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, include, re_path
 from app1 import views
 from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
-    path('', views.home, name=''),    
+    path('', views.home, name=''),   
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('profile/', views.myProfile, name="myProfile"),
     path('error/', views.error, name="error"),
@@ -57,4 +57,17 @@ urlpatterns = [
     path('izbornik/admin/profesori/', views.professorAdmin, name='profesori_lista'),
     path('izbornik/admin/profesori/update/<int:professor_id>/', views.professorUpdate, name='professor_update'),
     path('izbornik/admin/profesori/add/', views.professorAdd, name='add_professor'),
+    
+       # — Usa re_path en vez de path para incluir los módulos con regex internas —
+    # 1) URLs para visualizar/usar los formularios
+    re_path(r'^forms/', include('fobi.urls.view')),
+
+    # 2) URLs para editar/crear formularios con el form-builder
+    re_path(r'^forms/edit/', include('fobi.urls.edit')),
+
+    # si usas el db_store handler:
+    re_path(
+        r'^forms/plugins/form-handlers/db-store/',
+        include('fobi.contrib.plugins.form_handlers.db_store.urls')
+    ),
 ]
