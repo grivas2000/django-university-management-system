@@ -1,0 +1,10 @@
+// .devcontainer/devcontainer.json
+{
+  "name": "Mi Django Codespace",
+  "build": {
+    "dockerfile": "Dockerfile",      // si ya tienes un Dockerfile
+    // …otras opciones de build…
+  },
+  "forwardPorts": [8000],            // expone el puerto de Django
+  "postStartCommand": "cd project && python manage.py runserver 0.0.0.0:8000"
+}

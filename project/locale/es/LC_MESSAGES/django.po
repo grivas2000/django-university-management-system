@@ -1,0 +1,590 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-14 04:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: app1/templates/addPredmet.html:74 app1/templates/addProfesor.html:74
+#: app1/templates/addStudent.html:74 app1/templates/adminPredmeti.html:78
+#: app1/templates/adminProfesori.html:78 app1/templates/adminStudenti.html:78
+#: app1/templates/adminStudentiPredmet.html:79
+#: app1/templates/adminUpisniList.html:88 app1/templates/izbornikAdmin.html:86
+#: app1/templates/izbornikProfesor.html:87
+#: app1/templates/izbornikStudent.html:63
+#: app1/templates/profesorPredmeti.html:61
+#: app1/templates/profesorStudenti1.html:61
+#: app1/templates/profesorStudenti2.html:61
+#: app1/templates/profesorStudenti3.html:61
+#: app1/templates/studentFilterPredmeta.html:69 app1/templates/students.html:61
+#: app1/templates/updatePredmet.html:74 app1/templates/updateProfesor.html:74
+#: app1/templates/updateStudent.html:74
+msgid "Home"
+msgstr "Inicio"
+
+#: app1/templates/addPredmet.html:75 app1/templates/addProfesor.html:75
+#: app1/templates/addStudent.html:75 app1/templates/adminPredmeti.html:79
+#: app1/templates/adminProfesori.html:79 app1/templates/adminStudenti.html:79
+#: app1/templates/adminStudentiPredmet.html:80
+#: app1/templates/adminUpisniList.html:89 app1/templates/izbornikAdmin.html:87
+#: app1/templates/izbornikProfesor.html:88
+#: app1/templates/profesorPredmeti.html:62
+#: app1/templates/profesorStudenti1.html:62
+#: app1/templates/profesorStudenti2.html:62
+#: app1/templates/profesorStudenti3.html:62 app1/templates/students.html:62
+#: app1/templates/updatePredmet.html:75 app1/templates/updateProfesor.html:75
+#: app1/templates/updateStudent.html:75
+msgid "Subjects"
+msgstr "Asignaturas"
+
+#: app1/templates/addPredmet.html:76 app1/templates/addProfesor.html:76
+#: app1/templates/addStudent.html:76 app1/templates/adminPredmeti.html:80
+#: app1/templates/adminProfesori.html:80 app1/templates/adminStudenti.html:80
+#: app1/templates/adminStudentiPredmet.html:81
+#: app1/templates/adminUpisniList.html:90 app1/templates/izbornikAdmin.html:88
+#: app1/templates/profesorPredmeti.html:75 app1/templates/updatePredmet.html:76
+#: app1/templates/updateProfesor.html:76 app1/templates/updateStudent.html:76
+msgid "Students"
+msgstr "Estudiantes"
+
+#: app1/templates/addPredmet.html:77 app1/templates/addProfesor.html:77
+#: app1/templates/addStudent.html:77 app1/templates/adminPredmeti.html:81
+#: app1/templates/adminProfesori.html:81 app1/templates/adminStudenti.html:81
+#: app1/templates/adminStudentiPredmet.html:82
+#: app1/templates/adminUpisniList.html:91 app1/templates/izbornikAdmin.html:89
+#: app1/templates/updateProfesor.html:77 app1/templates/updateStudent.html:77
+msgid "Professors"
+msgstr "Profesores"
+
+#: app1/templates/addPredmet.html:78 app1/templates/addProfesor.html:78
+#: app1/templates/addStudent.html:78 app1/templates/adminPredmeti.html:82
+#: app1/templates/adminProfesori.html:82 app1/templates/adminStudenti.html:82
+#: app1/templates/adminStudentiPredmet.html:83
+#: app1/templates/adminUpisniList.html:92 app1/templates/izbornikAdmin.html:90
+#: app1/templates/izbornikProfesor.html:89
+#: app1/templates/izbornikStudent.html:65
+#: app1/templates/profesorPredmeti.html:63
+#: app1/templates/profesorStudenti1.html:63
+#: app1/templates/profesorStudenti2.html:63
+#: app1/templates/studentFilterPredmeta.html:71 app1/templates/students.html:63
+#: app1/templates/updateProfesor.html:78 app1/templates/updateStudent.html:78
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: app1/templates/addPredmet.html:81 app1/templates/adminPredmeti.html:86
+msgid "Add New Subject"
+msgstr "Agregar nueva asignatura"
+
+#: app1/templates/addPredmet.html:86 app1/templates/addProfesor.html:86
+#: app1/templates/addStudent.html:86 app1/templates/updateProfesor.html:87
+#: app1/templates/updateStudent.html:86
+msgid "Name:"
+msgstr "Nombre:"
+
+#: app1/templates/addPredmet.html:87
+msgid "Programming in Java"
+msgstr "Programación en Java"
+
+#: app1/templates/addPredmet.html:90
+msgid "Code:"
+msgstr "Código:"
+
+#: app1/templates/addPredmet.html:91
+msgid "SRC145"
+msgstr "SRC145"
+
+#: app1/templates/addPredmet.html:94
+msgid "Program:"
+msgstr "Programa:"
+
+#: app1/templates/addPredmet.html:95 app1/templates/addPredmet.html:103
+#: app1/templates/addPredmet.html:107
+msgid "5"
+msgstr "5"
+
+#: app1/templates/addPredmet.html:98
+msgid "ECTS:"
+msgstr "Créditos ECTS:"
+
+#: app1/templates/addPredmet.html:99
+msgid "6"
+msgstr "6"
+
+#: app1/templates/addPredmet.html:102
+msgid "Semester – Regular:"
+msgstr "Semestre – Regular:"
+
+#: app1/templates/addPredmet.html:106
+msgid "Semester – Irregular:"
+msgstr "Semestre – Irregular:"
+
+#: app1/templates/addPredmet.html:110
+msgid "Elective:"
+msgstr "Optativa:"
+
+#: app1/templates/addPredmet.html:111
+msgid "Enter 2 for Yes, 1 for No"
+msgstr "Ingresa 2 para Sí, 1 para No"
+
+#: app1/templates/addPredmet.html:114
+msgid "Professor:"
+msgstr "Profesor:"
+
+#: app1/templates/addPredmet.html:127 app1/templates/addProfesor.html:107
+#: app1/templates/addStudent.html:125
+msgid "Add"
+msgstr "Agregar"
+
+#: app1/templates/addProfesor.html:81 app1/templates/adminProfesori.html:86
+msgid "Add New Professor"
+msgstr "Agregar nuevo profesor"
+
+#: app1/templates/addProfesor.html:87 app1/templates/addStudent.html:87
+msgid "John"
+msgstr "Juan"
+
+#: app1/templates/addProfesor.html:90 app1/templates/addStudent.html:90
+#: app1/templates/updateProfesor.html:91 app1/templates/updateStudent.html:90
+msgid "Surname:"
+msgstr "Apellido:"
+
+#: app1/templates/addProfesor.html:91 app1/templates/addStudent.html:91
+msgid "Doe"
+msgstr "Pérez"
+
+#: app1/templates/addProfesor.html:94 app1/templates/addStudent.html:94
+#: app1/templates/izbornikAdmin.html:105 app1/templates/updateProfesor.html:95
+#: app1/templates/updateStudent.html:94
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+#: app1/templates/addProfesor.html:95 app1/templates/addStudent.html:95
+msgid "jdoe"
+msgstr "jdoe"
+
+#: app1/templates/addProfesor.html:98 app1/templates/addStudent.html:98
+#: app1/templates/izbornikAdmin.html:109 app1/templates/updateProfesor.html:99
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#: app1/templates/addProfesor.html:99 app1/templates/addStudent.html:99
+msgid "jdoe@oss.unist.hr"
+msgstr "jdoe@oss.unist.hr"
+
+#: app1/templates/addProfesor.html:102 app1/templates/addStudent.html:102
+#: app1/templates/updateProfesor.html:103
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: app1/templates/addProfesor.html:103 app1/templates/addStudent.html:103
+#: app1/templates/updateProfesor.html:105
+msgid "Enter Password"
+msgstr "Ingresa contraseña"
+
+#: app1/templates/addStudent.html:81 app1/templates/adminStudenti.html:86
+msgid "Add New Student"
+msgstr "Agrega nuevo estudiante"
+
+#: app1/templates/addStudent.html:106
+msgid "Status:"
+msgstr "Estado:"
+
+#: app1/templates/addStudent.html:112
+#: app1/templates/adminStudentiPredmet.html:106
+#: app1/templates/students.html:90
+msgid "Regular Student"
+msgstr "Estudiante regular"
+
+#: app1/templates/addStudent.html:114
+#: app1/templates/adminStudentiPredmet.html:108
+#: app1/templates/students.html:92
+msgid "Irregular Student"
+msgstr "Estudiante irregular"
+
+#: app1/templates/addStudent.html:116
+msgid "None"
+msgstr "Ninguno"
+
+#: app1/templates/adminPredmeti.html:85
+msgid "Subject Administration"
+msgstr "Administración de asignaturas"
+
+#: app1/templates/adminPredmeti.html:90
+#: app1/templates/adminProfesori.html:90
+#: app1/templates/adminStudenti.html:89
+#: app1/templates/adminStudentiPredmet.html:94
+msgid "Name"
+msgstr "Nombre"
+
+#: app1/templates/adminPredmeti.html:91
+msgid "Code"
+msgstr "Código"
+
+#: app1/templates/adminPredmeti.html:92
+#: app1/templates/adminUpisniList.html:116
+#: app1/templates/adminUpisniList.html:163
+#: app1/templates/izbornikStudent.html:81
+#: app1/templates/izbornikStudent.html:128
+#: app1/templates/profesorPredmeti.html:72
+msgid "Program"
+msgstr "Programa"
+
+#: app1/templates/adminPredmeti.html:93
+#: app1/templates/adminUpisniList.html:117
+#: app1/templates/adminUpisniList.html:164
+#: app1/templates/izbornikStudent.html:82
+#: app1/templates/izbornikStudent.html:129
+#: app1/templates/profesorPredmeti.html:73
+#: app1/templates/studentFilterPredmeta.html:92
+msgid "ECTS"
+msgstr "ECTS"
+
+#: app1/templates/adminPredmeti.html:94
+msgid "Semester – Regular"
+msgstr "Semestre – Regular"
+
+#: app1/templates/adminPredmeti.html:95
+msgid "Semester – Irregular"
+msgstr "Semestre – Irregular"
+
+#: app1/templates/adminPredmeti.html:96
+#: app1/templates/adminUpisniList.html:118
+#: app1/templates/adminUpisniList.html:165
+#: app1/templates/izbornikStudent.html:83
+#: app1/templates/izbornikStudent.html:130
+#: app1/templates/profesorPredmeti.html:74
+msgid "Elective"
+msgstr "Optativa"
+
+#: app1/templates/adminPredmeti.html:97
+#: app1/templates/adminUpisniList.html:119
+#: app1/templates/adminUpisniList.html:166
+#: app1/templates/izbornikStudent.html:84
+#: app1/templates/izbornikStudent.html:131
+msgid "Professor"
+msgstr "Profesor"
+
+#: app1/templates/adminPredmeti.html:111
+#: app1/templates/adminUpisniList.html:132
+#: app1/templates/adminUpisniList.html:179
+#: app1/templates/izbornikStudent.html:97
+#: app1/templates/izbornikStudent.html:144
+#: app1/templates/profesorPredmeti.html:90
+msgid "Yes"
+msgstr "Sí"
+
+#: app1/templates/adminPredmeti.html:113
+#: app1/templates/adminUpisniList.html:134
+#: app1/templates/adminUpisniList.html:181
+#: app1/templates/izbornikStudent.html:99
+#: app1/templates/izbornikStudent.html:146
+#: app1/templates/profesorPredmeti.html:92
+msgid "No"
+msgstr "No"
+
+#: app1/templates/adminPredmeti.html:118
+#: app1/templates/adminProfesori.html:103
+#: app1/templates/adminStudenti.html:107
+#: app1/templates/updateProfesor.html:110
+msgid "Update"
+msgstr "Actualizar"
+
+#: app1/templates/adminPredmeti.html:121
+msgid "View All Students"
+msgstr "Ver todos los estudiantes"
+
+#: app1/templates/adminProfesori.html:85
+msgid "Professor Administration"
+msgstr "Administración de profesores"
+
+#: app1/templates/adminProfesori.html:91
+#: app1/templates/adminStudenti.html:90
+#: app1/templates/adminStudentiPredmet.html:95
+msgid "Surname"
+msgstr "Apellido"
+
+#: app1/templates/adminProfesori.html:92
+#: app1/templates/adminStudenti.html:91
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: app1/templates/adminProfesori.html:93
+#: app1/templates/adminStudenti.html:92
+#: app1/templates/adminStudentiPredmet.html:96
+#: app1/templates/profesorStudenti1.html:76
+#: app1/templates/profesorStudenti2.html:76
+#: app1/templates/students.html:77
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: app1/templates/adminStudenti.html:85
+msgid "Student Administration"
+msgstr "Administración de estudiantes"
+
+#: app1/templates/adminStudenti.html:93
+msgid "First login"
+msgstr "Primer inicio de sesión"
+
+#: app1/templates/adminStudenti.html:94
+msgid "Last login"
+msgstr "Último inicio de sesión"
+
+#: app1/templates/adminStudenti.html:110
+msgid "Enrollment Form"
+msgstr "Formulario de inscripción"
+
+#: app1/templates/adminStudentiPredmet.html:88
+#, python-format
+msgid ""
+"\n"
+"    List of Students for Subject %(subj)s\n"
+"  "
+msgstr ""
+"\n"
+"    Lista de estudiantes para la asignatura %(subj)s\n"
+"  "
+
+#: app1/templates/adminStudentiPredmet.html:97
+#: app1/templates/profesorStudenti1.html:77
+#: app1/templates/profesorStudenti2.html:77
+msgid "Status"
+msgstr "Estado"
+
+#: app1/templates/adminUpisniList.html:97
+#, python-format
+msgid ""
+"\n"
+"    Enrollment List for Student %(first)s %(last)s\n"
+"  "
+msgstr ""
+"\n"
+"    Lista de inscripción para el estudiante %(first)s %(last)s\n"
+"  "
+
+#: app1/templates/adminUpisniList.html:105
+#, python-format
+msgid ""
+"\n"
+"        Semester %(sem)s\n"
+"      "
+msgstr ""
+"\n"
+"        Semestre %(sem)s\n"
+"      "
+
+#: app1/templates/adminUpisniList.html:110
+#: app1/templates/izbornikStudent.html:75
+msgid "Enrolled Subjects"
+msgstr "Asignaturas inscritas"
+
+#: app1/templates/adminUpisniList.html:114
+#: app1/templates/adminUpisniList.html:161
+#: app1/templates/izbornikStudent.html:79
+#: app1/templates/izbornikStudent.html:126
+#: app1/templates/profesorPredmeti.html:70
+#: app1/templates/studentFilterPredmeta.html:91
+msgid "Subject Name"
+msgstr "Nombre de la asignatura"
+
+#: app1/templates/adminUpisniList.html:115
+#: app1/templates/adminUpisniList.html:162
+#: app1/templates/izbornikStudent.html:80
+#: app1/templates/izbornikStudent.html:127
+#: app1/templates/profesorPredmeti.html:71
+msgid "Subject Code"
+msgstr "Código de la asignatura"
+
+#: app1/templates/adminUpisniList.html:140
+#: app1/templates/izbornikStudent.html:105
+#: app1/templates/profesorPredmeti.html:98
+#: app1/templates/students.html:101
+#: app1/templates/students.html:113
+msgid "Passed"
+msgstr "Aprobado"
+
+#: app1/templates/adminUpisniList.html:142
+#: app1/templates/izbornikStudent.html:107
+#: app1/templates/profesorStudenti1.html:88
+msgid "Lost signature"
+msgstr "Firma perdida"
+
+#: app1/templates/adminUpisniList.html:146
+#: app1/templates/izbornikStudent.html:111
+msgid "Unenroll"
+msgstr "Desinscribir"
+
+
+#: app1/templates/adminUpisniList.html:157
+#: app1/templates/izbornikStudent.html:122
+msgid "Unenrolled Subjects"
+msgstr "Materias no inscritas"
+
+#: app1/templates/adminUpisniList.html:188
+#: app1/templates/izbornikStudent.html:153
+msgid "Enroll"
+msgstr "Inscribirse"
+
+#: app1/templates/izbornikAdmin.html:95
+#, python-format
+msgid ""
+"\n"
+"    Logged in as: %(first)s %(last)s\n"
+"  "
+msgstr ""
+"\n"
+"    Conectado como: %(first)s %(last)s\n"
+"  "
+
+#: app1/templates/izbornikAdmin.html:113
+msgid "First login:"
+msgstr "Primer inicio de sesión:"
+
+#: app1/templates/izbornikAdmin.html:117
+msgid "Last login:"
+msgstr "Último inicio de sesión:"
+
+#: app1/templates/izbornikStudent.html:64
+#: app1/templates/studentFilterPredmeta.html:70
+#: app1/templates/studentFilterPredmeta.html:83
+msgid "Filter"
+msgstr "Filtrar"
+
+#: app1/templates/izbornikStudent.html:69
+msgid "Enrollment List"
+msgstr "Lista de inscripción"
+
+#: app1/templates/izbornikStudent.html:73
+#, python-format
+msgid "Semester %(sem)s"
+msgstr "Semestre %(sem)s"
+
+#: app1/templates/login.html:37 app1/templates/login.html:41
+#: app1/templates/register.html:71
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: app1/templates/login.html:45
+msgid "Don't have an account?"
+msgstr "¿No tienes una cuenta?"
+
+#: app1/templates/login.html:46
+msgid "Register Now"
+msgstr "Regístrate ahora"
+
+#: app1/templates/profesorPredmeti.html:66
+msgid "Overview of Subject List"
+msgstr "Resumen de materias"
+
+#: app1/templates/profesorPredmeti.html:95
+msgid "View All"
+msgstr "Ver todo"
+
+#: app1/templates/profesorPredmeti.html:96
+msgid "Signature Lost"
+msgstr "Firma perdida"
+
+#: app1/templates/profesorPredmeti.html:97
+#: app1/templates/profesorStudenti2.html:88 app1/templates/students.html:103
+#: app1/templates/students.html:115
+msgid "Enrolled"
+msgstr "Inscrito"
+
+#: app1/templates/profesorStudenti1.html:67
+#, python-format
+msgid ""
+"\n"
+"    Students who lost the signature for the subject %(subj_name)s\n"
+"  "
+msgstr ""
+"\n"
+"    Estudiantes que perdieron la firma de la materia %(subj_name)s\n"
+"  "
+
+#: app1/templates/profesorStudenti1.html:74
+#: app1/templates/profesorStudenti2.html:74
+msgid "First Name"
+msgstr "Nombre"
+
+#: app1/templates/profesorStudenti1.html:75
+#: app1/templates/profesorStudenti2.html:75
+msgid "Last Name"
+msgstr "Apellido"
+
+#: app1/templates/studentFilterPredmeta.html:77
+msgid "Subjects with more ECTS points than:"
+msgstr "Materias con más puntos ECTS que:"
+
+#: app1/templates/studentFilterPredmeta.html:80
+msgid "Subjects held in semester:"
+msgstr "Materias dictadas en el semestre:"
+
+#: app1/templates/studentFilterPredmeta.html:87
+msgid "Filtered Subjects:"
+msgstr "Materias filtradas:"
+
+#: app1/templates/studentFilterPredmeta.html:93
+msgid "Semester - Regular"
+msgstr "Semestre - Regular"
+
+#: app1/templates/studentFilterPredmeta.html:107
+msgid "No results for the specified criteria."
+msgstr "No hay resultados para los criterios especificados."
+
+#: app1/templates/students.html:67
+#, python-format
+msgid ""
+"\n"
+"    All students enrolled in the subject %(subj)s:\n"
+"  "
+msgstr ""
+"\n"
+"    Todos los estudiantes inscritos en la materia %(subj)s:\n"
+"  "
+
+#: app1/templates/students.html:76
+msgid "Student Name"
+msgstr "Nombre del estudiante"
+
+#: app1/templates/students.html:78
+msgid "Student Status"
+msgstr "Estado del estudiante"
+
+#: app1/templates/students.html:79
+msgid "Subject Status"
+msgstr "Estado de la materia"
+
+#: app1/templates/students.html:105 app1/templates/students.html:117
+msgid "Lost Signature"
+msgstr "Firma perdida"
+
+#: app1/templates/students.html:127
+msgid "Save"
+msgstr "Guardar"
+
+#: app1/templates/updateProfesor.html:81
+msgid "Update Professor"
+msgstr "Actualizar profesor"
+
+#: app1/templates/updateStudent.html:81
+msgid "Update Student"
+msgstr "Actualizar estudiante"
+
+#: project/settings.py:136
+msgid "English"
+msgstr "Inglés"
+
+#: project/settings.py:137
+msgid "Español"
+msgstr "Español"

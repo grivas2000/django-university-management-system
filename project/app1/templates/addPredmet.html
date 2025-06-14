@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block addPredmet %}
 <style>
@@ -68,60 +69,61 @@
     margin-top: 20px;
   }
 </style>
-<header>
-    <a href="{% url 'izbornik_admin' %}">Home</a>
-    <a href="{% url 'predmeti_lista' %}">Subjects</a>
-    <a href="{% url 'studenti_lista' %}">Students</a>
-    <a href="{% url 'profesori_lista' %}">Professors</a>
-    <a href="{% url 'logout' %}">Logout</a>
-  </header>
 
-  <h1>Add New Subject</h1>
-  <form method="post">
-      {% csrf_token %}
-      <table>
-          <tr>
-              <td><label for="new_name">Name:</label></td>
-              <td><input type="text" name="new_name" placeholder="Programming in Java"></td>
-          </tr>
-          <tr>
-              <td><label for="new_kod">Code:</label></td>
-              <td><input type="text" name="new_kod" placeholder="SRC145"></td>
-          </tr>
-          <tr>
-              <td><label for="new_program">Program:</label></td>
-              <td><input type="text" name="new_program" placeholder="5"></td>
-          </tr>
-          <tr>
-              <td><label for="new_ects">ECTS:</label></td>
-              <td><input type="number" name="new_ects" placeholder="6"></td>
-          </tr>
-          <tr>
-              <td><label for="new_sem_red">Semester - Regular:</label></td>
-              <td><input type="number" name="new_sem_red" placeholder="5"></td>
-          </tr>
-          <tr>
-              <td><label for="new_sem_izv">Semester - Irregular:</label></td>
-              <td><input type="number" name="new_sem_izv" placeholder="5"></td>
-          </tr>
-          <tr>
-              <td><label for="new_izborni">Elective:</label></td>
-              <td><input type="number" name="new_izborni" pattern="[1-2]" placeholder="Enter 2 for Yes, 1 for No"></td>
-          </tr>
-          <tr>
-              <td><label for="new_nositelj">Professor:</label></td>
-              <td>
-                  <select name="new_nositelj">
-                      {% for professor in professors %}
-                          <option value="{{ professor.username }}">
-                              {{ professor.first_name }} {{ professor.last_name }}</option>
-                      {% endfor %}
-                  </select>
-              </td>
-          </tr>
-      </table>
-      <br>
-      <button type="submit">Add</button>
-  </form>
-  {% endblock %}
-  
+<header>
+  <a href="{% url 'izbornik_admin' %}">{% trans "Home" %}</a>
+  <a href="{% url 'predmeti_lista' %}">{% trans "Subjects" %}</a>
+  <a href="{% url 'studenti_lista' %}">{% trans "Students" %}</a>
+  <a href="{% url 'profesori_lista' %}">{% trans "Professors" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
+</header>
+
+<h1>{% trans "Add New Subject" %}</h1>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td><label for="new_name">{% trans "Name:" %}</label></td>
+            <td><input type="text" name="new_name" placeholder="{% trans 'Programming in Java' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_kod">{% trans "Code:" %}</label></td>
+            <td><input type="text" name="new_kod" placeholder="{% trans 'SRC145' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_program">{% trans "Program:" %}</label></td>
+            <td><input type="text" name="new_program" placeholder="{% trans '5' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_ects">{% trans "ECTS:" %}</label></td>
+            <td><input type="number" name="new_ects" placeholder="{% trans '6' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_sem_red">{% trans "Semester – Regular:" %}</label></td>
+            <td><input type="number" name="new_sem_red" placeholder="{% trans '5' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_sem_izv">{% trans "Semester – Irregular:" %}</label></td>
+            <td><input type="number" name="new_sem_izv" placeholder="{% trans '5' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_izborni">{% trans "Elective:" %}</label></td>
+            <td><input type="number" name="new_izborni" pattern="[1-2]" placeholder="{% trans 'Enter 2 for Yes, 1 for No' %}"></td>
+        </tr>
+        <tr>
+            <td><label for="new_nositelj">{% trans "Professor:" %}</label></td>
+            <td>
+                <select name="new_nositelj">
+                    {% for professor in professors %}
+                        <option value="{{ professor.username }}">
+                            {{ professor.first_name }} {{ professor.last_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit">{% trans "Add" %}</button>
+</form>
+{% endblock %}

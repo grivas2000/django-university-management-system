@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block profesorPredmeti %}
 <style>
@@ -57,21 +58,21 @@
 </style>
 
 <header>
-  <a href="{% url 'izbornik_profesor' %}">Home</a>
-  <a href="{% url 'predmeti' %}">Subjects</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <a href="{% url 'izbornik_profesor' %}">{% trans "Home" %}</a>
+  <a href="{% url 'predmeti' %}">{% trans "Subjects" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
 
-<h2>Overview of Subject List</h2>
+<h2>{% trans "Overview of Subject List" %}</h2>
 <table>
   <thead>
     <tr>
-      <th>Subject Name</th>
-      <th>Subject Code</th>
-      <th>Program</th>
-      <th>ECTS</th>
-      <th>Elective</th>
-      <th>Students</th>
+      <th>{% trans "Subject Name" %}</th>
+      <th>{% trans "Subject Code" %}</th>
+      <th>{% trans "Program" %}</th>
+      <th>{% trans "ECTS" %}</th>
+      <th>{% trans "Elective" %}</th>
+      <th>{% trans "Students" %}</th>
       <th></th>
       <th></th>
       <th></th>
@@ -86,15 +87,15 @@
         <td>{{ subject.ects }}</td>
         <td>
           {% if subject.izborni == '2' %}
-              Yes
+            {% trans "Yes" %}
           {% else %}
-              No
+            {% trans "No" %}
           {% endif %}
-      </td>  
-        <td><a href="{% url 'view_students' subject.id %}">View All</a></td>
-        <td><a href="{% url 'view_students_failed' subject.id %}">Signature Lost</a></td>
-        <td><a href="{% url 'view_students_enrolled' subject.id %}">Enrolled</a></td>
-        <td><a href="{% url 'view_students_passed' subject.id %}">Passed</a></td>
+        </td>
+        <td><a href="{% url 'view_students' subject.id %}">{% trans "View All" %}</a></td>
+        <td><a href="{% url 'view_students_failed' subject.id %}">{% trans "Signature Lost" %}</a></td>
+        <td><a href="{% url 'view_students_enrolled' subject.id %}">{% trans "Enrolled" %}</a></td>
+        <td><a href="{% url 'view_students_passed' subject.id %}">{% trans "Passed" %}</a></td>
       </tr>
     {% endfor %}
   </tbody>

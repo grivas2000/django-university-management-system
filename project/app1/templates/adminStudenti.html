@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block adminStudenti %}
 <style>
@@ -74,23 +75,23 @@
 </style>
 
 <header>
-  <a href="{% url 'izbornik_admin' %}">Home</a>
-  <a href="{% url 'predmeti_lista' %}">Subjects</a>
-  <a href="{% url 'studenti_lista' %}">Students</a>
-  <a href="{% url 'profesori_lista' %}">Professors</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <a href="{% url 'izbornik_admin' %}">{% trans "Home" %}</a>
+  <a href="{% url 'predmeti_lista' %}">{% trans "Subjects" %}</a>
+  <a href="{% url 'studenti_lista' %}">{% trans "Students" %}</a>
+  <a href="{% url 'profesori_lista' %}">{% trans "Professors" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
 
-<h1>Student Administration</h1>
-<a href="{% url 'add_student' %}">Add New Student</a><br><br>
+<h1>{% trans "Student Administration" %}</h1>
+<a href="{% url 'add_student' %}">{% trans "Add New Student" %}</a><br><br>
 <table>
     <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>First login</th>
-        <th>Last login</th>
+        <th>{% trans "Name" %}</th>
+        <th>{% trans "Surname" %}</th>
+        <th>{% trans "Username" %}</th>
+        <th>{% trans "Email" %}</th>
+        <th>{% trans "First login" %}</th>
+        <th>{% trans "Last login" %}</th>
         <th></th>
         <th></th>
     </tr>
@@ -103,11 +104,11 @@
             <td>{{ student.date_joined }}</td>
             <td>{{ student.last_login }}</td>
             <td>
-                <a href="{% url 'student_update' student.id %}">Update</a>
+                <a href="{% url 'student_update' student.id %}">{% trans "Update" %}</a>
             </td>
             <td>
-              <a href="{% url 'enrollment_form' student.id %}">Enrollment Form</a>
-          </td>
+                <a href="{% url 'enrollment_form' student.id %}">{% trans "Enrollment Form" %}</a>
+            </td>
         </tr>
     {% endfor %}
 </table>

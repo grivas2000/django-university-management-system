@@ -1,4 +1,6 @@
+```django
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block login %}
 {% load static %}
@@ -32,13 +34,18 @@
 </style>
 
 <div class="centered-div">
-  <h2>Login</h2>
-  <form method="post" >
+  <h2>{% trans "Login" %}</h2>
+  <form method="post">
       {{ form }}
       {% csrf_token %}
-      <input type="submit" value="Login">
+      <input type="submit" value="{% trans "Login" %}">
   </form>
 
-  <p>Don't have an account? <a href="{% url 'register' %}">Register Now</a></p>
+  <p>
+    {% trans "Don't have an account?" %} 
+    <a href="{% url 'register' %}">{% trans "Register Now" %}</a>
+  </p>
 </div>
 {% endblock %}
+```
+

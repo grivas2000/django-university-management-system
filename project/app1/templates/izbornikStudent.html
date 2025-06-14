@@ -1,5 +1,4 @@
-{% extends 'home.html' %}
-
+{% load i18n %}
 {% block izbornikStudent %}
 <style>
   body {
@@ -61,28 +60,28 @@
 
 <header>
   <nav>
-    <a href="{% url 'izbornik_student' %}">Home</a>
-    <a href="{% url 'filter_subjects' %}">Filter</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'izbornik_student' %}">{% trans "Home" %}</a>
+    <a href="{% url 'filter_subjects' %}">{% trans "Filter" %}</a>
+    <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
   </nav>
 </header>
 
-<h1>Enrollment List</h1>
+<h1>{% trans "Enrollment List" %}</h1>
 
 {% for semester, subjects in semesters.items %}
   {% if subjects.enrolled_subjects or subjects.unenrolled_subjects %}
-    <h3>Semester {{ semester }}</h3>
+    {% blocktrans with sem=semester %}Semester {{ sem }}{% endblocktrans %}
     {% if subjects.enrolled_subjects %}
-      <h4>Enrolled Subjects</h4>
+      <h4>{% trans "Enrolled Subjects" %}</h4>
       <table>
         <thead>
           <tr>
-            <th>Subject Name</th>
-            <th>Subject Code</th>
-            <th>Program</th>
-            <th>ECTS</th>
-            <th>Elective</th>
-            <th>Professor</th>
+            <th>{% trans "Subject Name" %}</th>
+            <th>{% trans "Subject Code" %}</th>
+            <th>{% trans "Program" %}</th>
+            <th>{% trans "ECTS" %}</th>
+            <th>{% trans "Elective" %}</th>
+            <th>{% trans "Professor" %}</th>
             <th></th>
           </tr>
         </thead>
@@ -95,23 +94,23 @@
               <td>{{ subject.ects }}</td>
               <td>
                 {% if subject.izborni == '2' %}
-                    Yes
+                    {% trans "Yes" %}
                 {% else %}
-                    No
+                    {% trans "No" %}
                 {% endif %}
-            </td>           
+              </td>
               <td>{{ subject.nositelj.first_name }} {{ subject.nositelj.last_name }}</td>
               <td>
                 {% if subject.enrollment_status == 'Položen' %}
-                Passed
-              {% elif subject.enrollment_status == 'Izgubljen potpis' %}
-                Lost signature
-              {% else %}
-                <form action="{% url 'unenroll_subject' subject.id %}" method="POST">
-                  {% csrf_token %}
-                  <button type="submit">Unenroll</button>
-                </form>
-              {% endif %}
+                  {% trans "Passed" %}
+                {% elif subject.enrollment_status == 'Izgubljen potpis' %}
+                  {% trans "Lost signature" %}
+                {% else %}
+                  <form action="{% url 'unenroll_subject' subject.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">{% trans "Unenroll" %}</button>
+                  </form>
+                {% endif %}
               </td>
             </tr>
           {% endfor %}
@@ -120,16 +119,16 @@
       <br>
     {% endif %}
     {% if subjects.unenrolled_subjects %}
-      <h4>Unenrolled Subjects</h4>
+      <h4>{% trans "Unenrolled Subjects" %}</h4>
       <table>
         <thead>
           <tr>
-            <th>Subject Name</th>
-            <th>Subject Code</th>
-            <th>Program</th>
-            <th>ECTS</th>
-            <th>Elective</th>
-            <th>Professor</th>
+            <th>{% trans "Subject Name" %}</th>
+            <th>{% trans "Subject Code" %}</th>
+            <th>{% trans "Program" %}</th>
+            <th>{% trans "ECTS" %}</th>
+            <th>{% trans "Elective" %}</th>
+            <th>{% trans "Professor" %}</th>
             <th></th>
           </tr>
         </thead>
@@ -142,16 +141,16 @@
               <td>{{ subject.ects }}</td>
               <td>
                 {% if subject.izborni == '2' %}
-                    Yes
+                    {% trans "Yes" %}
                 {% else %}
-                    No
+                    {% trans "No" %}
                 {% endif %}
-            </td>    
+              </td>
               <td>{{ subject.nositelj.first_name }} {{ subject.nositelj.last_name }}</td>
               <td>
                 <form action="{% url 'enroll_subject' subject.id %}" method="POST">
                   {% csrf_token %}
-                  <button type="submit">Enroll</button>
+                  <button type="submit">{% trans "Enroll" %}</button>
                 </form>
               </td>
             </tr>

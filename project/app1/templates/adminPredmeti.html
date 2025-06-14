@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block adminPredmeti %}
 <style>
@@ -74,25 +75,26 @@
 </style>
 
 <header>
-  <a href="{% url 'izbornik_admin' %}">Home</a>
-  <a href="{% url 'predmeti_lista' %}">Subjects</a>
-  <a href="{% url 'studenti_lista' %}">Students</a>
-  <a href="{% url 'profesori_lista' %}">Professors</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <a href="{% url 'izbornik_admin' %}">{% trans "Home" %}</a>
+  <a href="{% url 'predmeti_lista' %}">{% trans "Subjects" %}</a>
+  <a href="{% url 'studenti_lista' %}">{% trans "Students" %}</a>
+  <a href="{% url 'profesori_lista' %}">{% trans "Professors" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
 
-<h1>Subject Administration</h1>
-<a href="{% url 'add_subject' %}">Add New Subject</a><br><br>
+<h1>{% trans "Subject Administration" %}</h1>
+<a href="{% url 'add_subject' %}">{% trans "Add New Subject" %}</a><br><br>
+
 <table>
   <tr>
-    <th>Name</th>
-    <th>Code</th>
-    <th>Program</th>
-    <th>ECTS</th>
-    <th>Semester - Regular</th>
-    <th>Semester - Irregular</th>
-    <th>Elective</th>
-    <th>Professor</th>
+    <th>{% trans "Name" %}</th>
+    <th>{% trans "Code" %}</th>
+    <th>{% trans "Program" %}</th>
+    <th>{% trans "ECTS" %}</th>
+    <th>{% trans "Semester – Regular" %}</th>
+    <th>{% trans "Semester – Irregular" %}</th>
+    <th>{% trans "Elective" %}</th>
+    <th>{% trans "Professor" %}</th>
     <th></th>
     <th></th>
   </tr>
@@ -106,17 +108,17 @@
       <td>{{ subject.sem_izv }}</td>
       <td>
         {% if subject.izborni == '2' %}
-            Yes
+          {% trans "Yes" %}
         {% else %}
-            No
+          {% trans "No" %}
         {% endif %}
-    </td>  
+      </td>  
       <td>{{ subject.nositelj.first_name }} {{ subject.nositelj.last_name }}</td>
       <td>
-        <a href="{% url 'subject_update' subject.id %}">Update</a>
+        <a href="{% url 'subject_update' subject.id %}">{% trans "Update" %}</a>
       </td>
       <td>
-        <a href="{% url 'students_subject' subject.id %}">View All Students</a>
+        <a href="{% url 'students_subject' subject.id %}">{% trans "View All Students" %}</a>
       </td>
     </tr>
   {% endfor %}

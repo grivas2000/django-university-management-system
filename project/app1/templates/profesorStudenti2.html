@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block profesorStudenti2 %}
 <style>
@@ -57,36 +58,40 @@
 </style>
 
 <header>
-  <a href="{% url 'izbornik_profesor' %}">Home</a>
-  <a href="{% url 'predmeti' %}">Subjects</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <a href="{% url 'izbornik_profesor' %}">{% trans "Home" %}</a>
+  <a href="{% url 'predmeti' %}">{% trans "Subjects" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
 
-  <h2>Students enrolled in subject {{ subject.name }}</h2>
-  <table>
-    <thead>
+<h2>
+  {% blocktrans with subject_name=subject.name %}
+    Students enrolled in subject {{ subject_name }}
+  {% endblocktrans %}
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th>{% trans "First Name" %}</th>
+      <th>{% trans "Last Name" %}</th>
+      <th>{% trans "Email" %}</th>
+      <th>{% trans "Status" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Status</th>
+        <td>{{ student.korisnik.first_name }}</td>
+        <td>{{ student.korisnik.last_name }}</td>
+        <td>{{ student.korisnik.email }}</td>
+        <td>
+          {% if student.status.status == 'Prijavljen' %}
+            {% trans "Enrolled" %}
+          {% else %}
+            {{ student.status.status }}
+          {% endif %}
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      {% for student in students %}
-        <tr>
-          <td>{{ student.korisnik.first_name }}</td>
-          <td>{{ student.korisnik.last_name }}</td>
-          <td>{{ student.korisnik.email }}</td>
-          <td>
-            {% if student.status.status == 'Prijavljen' %}
-              Enrolled
-            {% else %}
-              {{ student.status.status }}
-            {% endif %}
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

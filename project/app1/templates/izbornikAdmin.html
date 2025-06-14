@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
+{% load i18n static %}
 
 {% block izbornikAdmin %}
-{% load static %}
 <style>
   body {
     background-image: url("{% static 'home.jpg' %}");
@@ -67,9 +67,8 @@
     font-size: 20px;
   }
 
-  table tr:nth-child(even){background-color: #f2f2f2;}
-
-  table tr:hover {background-color: #ddd;}
+  table tr:nth-child(even) { background-color: #f2f2f2; }
+  table tr:hover { background-color: #ddd; }
 
   th, td {
     padding: 10px;
@@ -81,16 +80,21 @@
     background-color: #f2f2f2;
   }
 </style>
+
 <header>
-  <a href="{% url 'izbornik_admin' %}">Home</a>
-  <a href="{% url 'predmeti_lista' %}">Subjects</a>
-  <a href="{% url 'studenti_lista' %}">Students</a>
-  <a href="{% url 'profesori_lista' %}">Professors</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <nav>
+    <a href="{% url 'izbornik_admin' %}">{% trans "Home" %}</a>
+    <a href="{% url 'predmeti_lista' %}">{% trans "Subjects" %}</a>
+    <a href="{% url 'studenti_lista' %}">{% trans "Students" %}</a>
+    <a href="{% url 'profesori_lista' %}">{% trans "Professors" %}</a>
+    <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
+  </nav>
 </header>
 
 <main>
-  <h3>Logged in as: {{ request.user.first_name }} {{ request.user.last_name }}</h3>
+  {% blocktrans with first=request.user.first_name last=request.user.last_name %}
+    Logged in as: {{ first }} {{ last }}
+  {% endblocktrans %}
 
   <table>
     <tr>
@@ -98,19 +102,19 @@
       <th></th>
     </tr>
     <tr>
-      <td>Username:</td>
+      <td>{% trans "Username:" %}</td>
       <td>{{ request.user.username }}</td>
     </tr>
     <tr>
-      <td>Email:</td>
+      <td>{% trans "Email:" %}</td>
       <td>{{ request.user.email }}</td>
     </tr>
     <tr>
-      <td>First login:</td>
+      <td>{% trans "First login:" %}</td>
       <td>{{ request.user.date_joined }}</td>
     </tr>
     <tr>
-      <td>Last login:</td>
+      <td>{% trans "Last login:" %}</td>
       <td>{{ request.user.last_login }}</td>
     </tr>
   </table>

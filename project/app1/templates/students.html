@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block students %}
 <style>
@@ -55,22 +56,27 @@ body {
     background-color: #f2f2f2;
   }
 </style>
+
 <header>
-  <a href="{% url 'izbornik_profesor' %}">Home</a>
-  <a href="{% url 'predmeti' %}">Subjects</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <a href="{% url 'izbornik_profesor' %}">{% trans 'Home' %}</a>
+  <a href="{% url 'predmeti' %}">{% trans 'Subjects' %}</a>
+  <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
 </header><br>
 
-<h2>All students enrolled in the subject {{ subject.name }}:</h2>
+<h2>
+  {% blocktrans with subj=subject.name %}
+    All students enrolled in the subject {{ subj }}:
+  {% endblocktrans %}
+</h2>
 <form method="POST">
   {% csrf_token %}
   <table>
     <thead>
       <tr>
-        <th>Student Name</th>
-        <th>Email</th>
-        <th>Student Status</th>
-        <th>Subject Status</th>
+        <th>{% trans 'Student Name' %}</th>
+        <th>{% trans 'Email' %}</th>
+        <th>{% trans 'Student Status' %}</th>
+        <th>{% trans 'Subject Status' %}</th>
         <th></th>
       </tr>
     </thead>
@@ -81,40 +87,44 @@ body {
           <td>{{ student.korisnik.email }}</td>
           <td>
             {% if student.korisnik.status.status == 'Redovni student' %}
-            Regular Student
-          {% else %}
-            Irregular Student
-          {% endif %}
+              {% trans 'Regular Student' %}
+            {% else %}
+              {% trans 'Irregular Student' %}
+            {% endif %}
           </td>
           <td>
             <select name="status_{{ student.id }}" {% if student.status.status == 'Položen' or student.status.status == 'Izgubljen potpis' %}disabled{% endif %}>
               {% for status in all_status %}
                 {% if status.id == student.status.id %}
-                  {% if status.status == 'Položen' %}
-                    <option value="{{ status.id }}" selected>Passed</option>
-                  {% elif status.status == 'Prijavljen' %}
-                    <option value="{{ status.id }}" selected>Enrolled</option>
-                  {% elif status.status == 'Izgubljen potpis' %}
-                    <option value="{{ status.id }}" selected>Lost Signature</option>
-                  {% else %}
-                    <option value="{{ status.id }}" selected>{{ status.status }}</option>
-                  {% endif %}
+                  <option value="{{ status.id }}" selected>
+                    {% if status.status == 'Položen' %}
+                      {% trans 'Passed' %}
+                    {% elif status.status == 'Prijavljen' %}
+                      {% trans 'Enrolled' %}
+                    {% elif status.status == 'Izgubljen potpis' %}
+                      {% trans 'Lost Signature' %}
+                    {% else %}
+                      {{ status.status }}
+                    {% endif %}
+                  </option>
                 {% else %}
-                  {% if status.status == 'Položen' %}
-                    <option value="{{ status.id }}">Passed</option>
-                  {% elif status.status == 'Prijavljen' %}
-                    <option value="{{ status.id }}">Enrolled</option>
-                  {% elif status.status == 'Izgubljen potpis' %}
-                    <option value="{{ status.id }}">Lost Signature</option>
-                  {% else %}
-                    <option value="{{ status.id }}">{{ status.status }}</option>
-                  {% endif %}
+                  <option value="{{ status.id }}">
+                    {% if status.status == 'Položen' %}
+                      {% trans 'Passed' %}
+                    {% elif status.status == 'Prijavljen' %}
+                      {% trans 'Enrolled' %}
+                    {% elif status.status == 'Izgubljen potpis' %}
+                      {% trans 'Lost Signature' %}
+                    {% else %}
+                      {{ status.status }}
+                    {% endif %}
+                  </option>
                 {% endif %}
               {% endfor %}
             </select>
           </td>
           <td>
-            <button type="submit">Save</button>
+            <button type="submit">{% trans 'Save' %}</button>
           </td>
         </tr>
       {% endfor %}

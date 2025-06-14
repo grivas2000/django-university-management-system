@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block profesorStudenti3 %}
 <style>
@@ -57,36 +58,6 @@
 </style>
 
 <header>
-  <a href="{% url 'izbornik_profesor' %}">Home</a>
-  <a href="{% url 'predmeti' %}">Subjects</a>
-  <a href="{% url 'logout' %}">Logout</a>
-</header>
-
-<h2>Students who passed the subject {{ subject.name }}</h2>
-<table>
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for student in students %}
-      <tr>
-        <td>{{ student.korisnik.first_name }}</td>
-        <td>{{ student.korisnik.last_name }}</td>
-        <td>{{ student.korisnik.email }}</td>
-        <td>            
-          {% if student.status.status == 'Položen' %}
-          Passed
-        {% else %}
-          {{ student.status.status }}
-        {% endif %}
-      </td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% endblock %}
+  <a href="{% url 'izbornik_profesor' %}">{% trans "Home" %}</a>
+  <a href="{% url 'predmeti' %}">{% trans "Subjects" %}</a>
+  <a href="{% url 'logout' %}">

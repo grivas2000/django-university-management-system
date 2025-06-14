@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
+{% load i18n static %}
 
 {% block register %}
-{% load static %}
 <style>
   body {
     background-image: url("{% static 'book.jpg' %}");
@@ -53,7 +53,7 @@
 </style>
 
 <div class="centered-div">
-  <h2>Registration form</h2>
+  <h2>{% trans "Registration form" %}</h2>
   <form method="post">
       <table>
           {% for field in form %}
@@ -64,9 +64,11 @@
           {% endfor %}
       </table><br>
       {% csrf_token %}
-      <input type="submit" value="Register">
+      <input type="submit" value="{% trans "Register" %}">
   </form>
 
-  <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+  <p>{% trans "Already have an account?" %} 
+    <a href="{% url 'login' %}">{% trans "Login" %}</a>
+  </p>
 </div>
 {% endblock %}

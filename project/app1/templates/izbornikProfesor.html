@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
+{% load i18n static %}
 
 {% block izbornikProfesor %}
-{% load static %}
 <style>
   body {
     background-image: url("{% static 'home.jpg' %}");
@@ -84,36 +84,6 @@
 
 <header>
   <nav>
-    <a href="{% url 'izbornik_profesor' %}">Home</a>
-    <a href="{% url 'predmeti' %}">Subjects</a>
-    <a href="{% url 'logout' %}">Logout</a>
-  </nav>
-</header>
-
-<main>
-  <h3>Logged in as: {{ request.user.first_name }} {{ request.user.last_name }}</h3>
-
-  <table>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <td>Username:</td>
-      <td>{{ request.user.username }}</td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td>{{ request.user.email }}</td>
-    </tr>
-    <tr>
-      <td>First login:</td>
-      <td>{{ request.user.date_joined }}</td>
-    </tr>
-    <tr>
-      <td>Last login:</td>
-      <td>{{ request.user.last_login }}</td>
-    </tr>
-  </table>
-</main>
-{% endblock %}
+    <a href="{% url 'izbornik_profesor' %}">{% trans "Home" %}</a>
+    <a href="{% url 'predmeti' %}">{% trans "Subjects" %}</a>
+    <a href="{% url 'logout' %}">{% trans "Logout" %}</a>

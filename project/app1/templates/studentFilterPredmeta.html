@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load i18n %}
 
 {% block studentFilterPredmeta %}
 <style>
@@ -65,31 +66,31 @@
 </style>
 
 <header>
-  <a href="{% url 'izbornik_student' %}">Home</a>
-  <a href="{% url 'filter_subjects' %}">Filter</a>
-  <a href="{% url 'logout' %}">Logout</a>
+  <a href="{% url 'izbornik_student' %}">{% trans "Home" %}</a>
+  <a href="{% url 'filter_subjects' %}">{% trans "Filter" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
 
-<h1>Subject Filtering</h1>
+<h1>{% trans "Subject Filtering" %}</h1>
 
 <form action="{% url 'filter_subjects' %}" method="GET">
-  <label for="points">Subjects with more ECTS points than:</label>
+  <label for="points">{% trans "Subjects with more ECTS points than:" %}</label>
   <input type="number" name="points" id="points" min="1">
 
-  <label for="semester">Subjects held in semester:</label>
+  <label for="semester">{% trans "Subjects held in semester:" %}</label>
   <input type="number" name="semester" id="semester" min="1">
 
-  <button type="submit">Filter</button>
+  <button type="submit">{% trans "Filter" %}</button>
 </form>
 
 {% if filter_subjects %}
-  <h2>Filtered Subjects:</h2>
+  <h2>{% trans "Filtered Subjects:" %}</h2>
   <table>
     <thead>
       <tr>
-        <th>Subject Name</th>
-        <th>ECTS</th>
-        <th>Semester - Regular</th>
+        <th>{% trans "Subject Name" %}</th>
+        <th>{% trans "ECTS" %}</th>
+        <th>{% trans "Semester - Regular" %}</th>
       </tr>
     </thead>
     <tbody>
@@ -103,6 +104,6 @@
     </tbody>
   </table>
 {% else %}
-  <p>No results for the specified criteria.</p>
+  <p>{% trans "No results for the specified criteria." %}</p>
 {% endif %}
 {% endblock %}
