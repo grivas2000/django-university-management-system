@@ -10,19 +10,16 @@
       color: #333;
       overflow-x: hidden;
     }
-  
     a {
       color: #3c71c0;
       text-decoration: none;
       padding: 20px;
     }
-  
     a:hover {
       background-color: #f2f2f2;
       color: #3c71c0;
       border-radius: 40%;
     }
-  
     header {
       background-color: #3c71c0;
       padding: 20px;
@@ -30,51 +27,152 @@
       width: 100%;
       font-size: 20px;
     }
-  
-    nav {
-      margin-top: 20px;
-    }
-  
     main {
       margin-left: 60px;
       flex-grow: 1;
       padding: 20px;
     }
-  
     h1 {
       margin-left: 60px;
     }
-  
     table {
       margin-left: 60px;
       border-collapse: collapse;
       width: 80%;
       margin-top: 20px;
     }
-  
     th, td {
       padding: 10px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
-  
     th {
       background-color: #f2f2f2;
     }
-  
+    input, select, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 5px;
+    }
     button {
       margin-left: auto;
       margin-right: auto;
       display: block;
       margin-top: 20px;
     }
+    .messages {
+      margin-left: 60px;
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+    }
+    .messages li {
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .messages li.error { background-color: #f8d7da; color: #721c24; }
+    .messages li.success { background-color: #d4edda; color: #155724; }
+    .messages li.info { background-color: #cce5ff; color: #004085; }
 </style>
 
 <header>
   <a href="{% url 'izbornik_admin' %}">{% trans "Home" %}</a>
   <a href="{% url 'predmeti_lista' %}">{% trans "Subjects" %}</a>
   <a href="{% url 'studenti_lista' %}">{% trans "Students" %}</a>
-  <a href="{% url 'profesori_lista' %}">{%trans "profesori_lista"%}
+  <a href="{% url 'profesori_lista' %}">{% trans "Professors" %}</a>
+  <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
+
+<main>
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <h1>{% trans "Update Subject" %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td><label for="new_name">{% trans "Name:" %}</label></td>
+        <td>
+          <input type="text" id="new_name" name="new_name"
+                 value="{{ subject.name }}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_kod">{% trans "Code:" %}</label></td>
+        <td>
+          <input type="text" id="new_kod" name="new_kod"
+                 value="{{ subject.kod }}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_program">{% trans "Program:" %}</label></td>
+        <td>
+          <textarea id="new_program" name="new_program" rows="4">{{ subject.program }}</textarea>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_ects">{% trans "ECTS:" %}</label></td>
+        <td>
+          <input type="number" id="new_ects" name="new_ects"
+                 value="{{ subject.ects }}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_sem_red">{% trans "Semester (regular):" %}</label></td>
+        <td>
+          <input type="number" id="new_sem_red" name="new_sem_red"
+                 value="{{ subject.sem_red }}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_sem_izv">{% trans "Semester (extraordinary):" %}</label></td>
+        <td>
+          <input type="number" id="new_sem_izv" name="new_sem_izv"
+                 value="{{ subject.sem_izv }}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_izborni">{% trans "Elective (izborni):" %}</label></td>
+        <td>
+          <input type="text" id="new_izborni" name="new_izborni"
+                 value="{{ subject.izborni }}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_nositelj">{% trans "Professor (nositelj):" %}</label></td>
+        <td>
+          <select id="new_nositelj" name="new_nositelj" required>
+            <option value="">{% trans "— Select professor —" %}</option>
+            {% for prof in professors %}
+              <option value="{{ prof.username }}"
+                {% if subject.nositelj and subject.nositelj.username == prof.username %}selected{% endif %}>
+                {{ prof.get_full_name }} ({{ prof.username }})
+              </option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="new_horario">{% trans "Horario:" %}</label></td>
+        <td>
+          <input type="text" id="new_horario" name="new_horario"
+                 value="{{ subject.horario }}"
+                 placeholder="{% trans 'Ej: Lun 08:00-10:00; Mié 14:00-16:00' %}">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="submit">{% trans "Update Subject" %}</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</main>
 {% endblock %}
-```

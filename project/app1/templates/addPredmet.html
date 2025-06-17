@@ -92,7 +92,7 @@
         </tr>
         <tr>
             <td><label for="new_program">{% trans "Program:" %}</label></td>
-            <td><input type="text" name="new_program" placeholder="{% trans '5' %}"></td>
+            <td><input type="text" name="new_program" placeholder="{% trans 'Bachelor of Computer Science' %}"></td>
         </tr>
         <tr>
             <td><label for="new_ects">{% trans "ECTS:" %}</label></td>
@@ -121,6 +121,10 @@
                     {% endfor %}
                 </select>
             </td>
+        </tr>
+        <tr>
+            <td><label for="new_horario">{% trans "Schedule:" %}</label></td>
+            <td><input type="text" name="new_horario" placeholder="{% trans 'Mon 08:00-10:00; Wed 14:00-16:00' %}"></td>
         </tr>
     </table>
     <br>

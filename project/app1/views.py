@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages  # <— importar aquí
 from .models import *
 from .forms import RegisterForm
 from django.contrib.auth import authenticate, login
@@ -72,6 +73,7 @@ def studentDashboard(request):
             subject.enrollment_status = None
 
     return render(request, 'izbornikStudent.html', {'semesters': semesters, 'student': student})
+
 
 
 @student_required
@@ -189,69 +191,130 @@ def subjectAdmin(request):
     return render(request, 'adminPredmeti.html', {'subjects': subjects})
 
 
-@admin_required
 def subjectUpdate(request, subject_id):
-    subject = Predmeti.objects.get(id=subject_id)
-    professor = Korisnik.objects.filter(role_id=2)
+    subject = get_object_or_404(Predmeti, id=subject_id)
+    # Obtener lista de profesores; aquí según tu lógica: role_id=2 u otro filtro
+    professors = Korisnik.objects.filter(role_id=2)
 
     if request.method == 'POST':
-        new_name = request.POST.get('new_name')
-        new_kod = request.POST.get('new_kod')
-        new_program = request.POST.get('new_program')
-        new_ects = request.POST.get('new_ects')
-        new_sem_red = request.POST.get('new_sem_red')
-        new_sem_izv = request.POST.get('new_sem_izv')
-        new_izborni = request.POST.get('new_izborni')
-        new_nositelj_username = request.POST.get('new_nositelj')
+        new_name = request.POST.get('new_name', '').strip()
+        new_kod = request.POST.get('new_kod', '').strip()
+        new_program = request.POST.get('new_program', '').strip()
+        new_ects = request.POST.get('new_ects', '').strip()
+        new_sem_red = request.POST.get('new_sem_red', '').strip()
+        new_sem_izv = request.POST.get('new_sem_izv', '').strip()
+        new_izborni = request.POST.get('new_izborni', '').strip()
+        new_nositelj_username = request.POST.get('new_nositelj', '').strip()
+        new_horario = request.POST.get('new_horario', '').strip()
 
-        new_nositelj = Korisnik.objects.get(username=new_nositelj_username)
+        # Validaciones básicas
+        if not new_name or not new_kod:
+            messages.error(request, "Name y Kod son obligatorios.")
+            return render(request, 'updatePredmet.html', {
+                'subject': subject,
+                'professors': professors
+            })
 
+        # Validar valores numéricos (ects, sem_red, sem_izv)
+        try:
+            ects_val = int(new_ects)
+            sem_red_val = int(new_sem_red)
+            sem_izv_val = int(new_sem_izv)
+        except ValueError:
+            messages.error(request, "Ects, semestre regular y semestre extraordinario deben ser números enteros.")
+            return render(request, 'updatePredmet.html', {
+                'subject': subject,
+                'professors': professors
+            })
+
+        # Obtener nositelj
+        try:
+            new_nositelj = Korisnik.objects.get(username=new_nositelj_username)
+        except Korisnik.DoesNotExist:
+            messages.error(request, "Profesor (nositelj) inválido.")
+            return render(request, 'updatePredmet.html', {
+                'subject': subject,
+                'professors': professors
+            })
+
+        # Asignar campos
         subject.name = new_name
         subject.kod = new_kod
         subject.program = new_program
-        subject.ects = new_ects
-        subject.sem_red = new_sem_red
-        subject.sem_izv = new_sem_izv
+        subject.ects = ects_val
+        subject.sem_red = sem_red_val
+        subject.sem_izv = sem_izv_val
         subject.izborni = new_izborni
         subject.nositelj = new_nositelj
+        subject.horario = new_horario  # asignamos el nuevo campo
         subject.save()
 
+        messages.success(request, "Materia actualizada correctamente.")
         return redirect('predmeti_lista')
-    
-    return render(request, 'updatePredmet.html', {'subject': subject, 'subject_id': subject_id, 'professors': professor})
+
+    # GET: pasar al template para prellenar
+    return render(request, 'updatePredmet.html', {
+        'subject': subject,
+        'professors': professors
+    })
 
 
 @admin_required
 def subjectAdd(request):
     if request.method == 'POST':
-        new_name = request.POST.get('new_name')
-        new_kod = request.POST.get('new_kod')
-        new_program = request.POST.get('new_program')
-        new_ects = request.POST.get('new_ects')
-        new_sem_red = request.POST.get('new_sem_red')
-        new_sem_izv = request.POST.get('new_sem_izv')
-        new_izborni = request.POST.get('new_izborni')
-        new_nositelj_username = request.POST.get('new_nositelj')
+        new_name = request.POST.get('new_name', '').strip()
+        new_kod = request.POST.get('new_kod', '').strip()
+        new_program = request.POST.get('new_program', '').strip()
+        new_ects = request.POST.get('new_ects', '').strip()
+        new_sem_red = request.POST.get('new_sem_red', '').strip()
+        new_sem_izv = request.POST.get('new_sem_izv', '').strip()
+        new_izborni = request.POST.get('new_izborni', '').strip()
+        new_nositelj_username = request.POST.get('new_nositelj', '').strip()
+        new_horario = request.POST.get('new_horario', '').strip()
 
-        new_nositelj = Korisnik.objects.get(username=new_nositelj_username)
+        # Validaciones básicas
+        if not new_name or not new_kod:
+            messages.error(request, "Name y Kod son obligatorios.")
+            return render(request, 'addPredmet.html', {
+                'professors': Korisnik.objects.filter(role_id=2)
+            })
+
+        try:
+            ects_val = int(new_ects)
+            sem_red_val = int(new_sem_red)
+            sem_izv_val = int(new_sem_izv)
+        except ValueError:
+            messages.error(request, "Ects, semestre regular y semestre extraordinario deben ser números enteros.")
+            return render(request, 'addPredmet.html', {
+                'professors': Korisnik.objects.filter(role_id=2)
+            })
+
+        try:
+            new_nositelj = Korisnik.objects.get(username=new_nositelj_username)
+        except Korisnik.DoesNotExist:
+            messages.error(request, "Profesor (nositelj) inválido.")
+            return render(request, 'addPredmet.html', {
+                'professors': Korisnik.objects.filter(role_id=2)
+            })
 
         predmet = Predmeti(
             name=new_name,
             kod=new_kod,
             program=new_program,
-            ects=new_ects,
-            sem_red=new_sem_red,
-            sem_izv=new_sem_izv,
+            ects=ects_val,
+            sem_red=sem_red_val,
+            sem_izv=sem_izv_val,
             izborni=new_izborni,
-            nositelj=new_nositelj
+            nositelj=new_nositelj,
+            horario=new_horario  # asignamos aquí también
         )
         predmet.save()
+        messages.success(request, "Materia creada correctamente.")
         return redirect('predmeti_lista')
 
-    professor = Korisnik.objects.filter(role_id=2)
-
-    return render(request, 'addPredmet.html', {'professors': professor})
-
+    # GET
+    professors = Korisnik.objects.filter(role_id=2)
+    return render(request, 'addPredmet.html', {'professors': professors})
 
 @admin_required
 def studentAdmin(request):
@@ -262,30 +325,64 @@ def studentAdmin(request):
 @admin_required
 def studentUpdate(request, student_id):
     student = get_object_or_404(Korisnik, id=student_id)
-    status_list = StatusStudenta.objects.all()
 
     if request.method == 'POST':
-        new_first_name = request.POST.get('new_first_name')
-        new_last_name = request.POST.get('new_last_name')
-        new_username = request.POST.get('new_username')
-        new_email = request.POST.get('new_email')
-        new_password = request.POST.get('new_password')
-        new_status_id = request.POST.get('new_status')
+        # guardar valores originales para comparar
+        orig_first = student.first_name or ''
+        orig_last = student.last_name or ''
+        orig_user = student.username or ''
+        orig_email = student.email or ''
 
-        new_status = get_object_or_404(StatusStudenta, id=new_status_id)
+        # obtener datos del formulario
+        new_first_name = request.POST.get('new_first_name', '').strip()
+        new_last_name = request.POST.get('new_last_name', '').strip()
+        new_username = request.POST.get('new_username', '').strip()
+        new_email = request.POST.get('new_email', '').strip()
+        new_password = request.POST.get('new_password', '')
 
-        student.first_name = new_first_name
-        student.last_name = new_last_name
-        student.username = new_username
-        student.email = new_email
-        student.password = make_password(new_password)
-        student.status = new_status
-        student.save()
+        # Validaciones básicas
+        if not new_first_name or not new_last_name or not new_username:
+            messages.error(request, "Name, surname and username are required.")
+            return render(request, 'updateStudent.html', {'student': student})
 
-        return redirect('studenti_lista')
+        # Unicidad username/email
+        if Korisnik.objects.exclude(id=student.id).filter(username=new_username).exists():
+            messages.error(request, "Username already taken.")
+            return render(request, 'updateStudent.html', {'student': student})
+        if new_email and Korisnik.objects.exclude(id=student.id).filter(email=new_email).exists():
+            messages.error(request, "Email already in use.")
+            return render(request, 'updateStudent.html', {'student': student})
 
-    return render(request, 'updateStudent.html', {'student': student, 'student_id': student_id, 'status_list': status_list})
+        # Determinar si hay cambios
+        changed = False
+        if new_first_name != orig_first:
+            student.first_name = new_first_name
+            changed = True
+        if new_last_name != orig_last:
+            student.last_name = new_last_name
+            changed = True
+        if new_username != orig_user:
+            student.username = new_username
+            changed = True
+        if new_email != orig_email:
+            student.email = new_email
+            changed = True
+        if new_password:
+            student.set_password(new_password)
+            changed = True
 
+        if changed:
+            student.save()
+            messages.success(request, "Student updated successfully.")
+            # Redirigir al inicio del dashboard; usa el nombre de URL correcto
+            return redirect('izbornik_admin')
+        else:
+            messages.info(request, "No changes detected.")
+            # quedarse en la misma página para que el usuario vea mensaje
+            return render(request, 'updateStudent.html', {'student': student})
+
+    # GET
+    return render(request, 'updateStudent.html', {'student': student})
 
 @admin_required
 def studentAdd(request):

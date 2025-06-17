@@ -68,6 +68,12 @@ class Predmeti(models.Model):
     sem_izv = models.IntegerField()
     izborni = models.CharField(max_length=3)
     nositelj = models.ForeignKey(Korisnik, on_delete=models.CASCADE, blank="true", null="true")
+    horario = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text="Formato libre, e.g. 'Lun 8:00-10:00; Mié 14:00-16:00'"
+    )
 
     def __str__(self):
         return self.name

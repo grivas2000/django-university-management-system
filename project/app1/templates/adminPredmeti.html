@@ -1,3 +1,4 @@
+```html
 {% extends 'home.html' %}
 {% load i18n %}
 
@@ -10,19 +11,16 @@
     color: #333;
     overflow-x: hidden;
   }
-
   a {
     color: #3c71c0;
     text-decoration: none;
     padding: 20px;
   }
-
   a:hover {
     background-color: #f2f2f2;
     color: #333;
     border-radius: 40%;
   }
-
   header {
     background-color: #3c71c0;
     padding: 20px;
@@ -30,45 +28,34 @@
     width: 100%;
     font-size: 20px;
   }
-
   header a {
     color: #f2f2f2;
     text-decoration: none;
     padding: 20px;
   }
-
   header a:hover {
     background-color: #f2f2f2;
     color: #3c71c0;
   }
-
-  nav {
-    margin-top: 20px;
-  }
-
   h1, a {
     margin-left: 60px;
   }
-
   main {
     margin-left: 60px;
     flex-grow: 1;
     padding: 20px;
   }
-
   table {
     margin-left: 60px;
     border-collapse: collapse;
     width: 90%;
     margin-top: 20px;
   }
-
   th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
-
   th {
     background-color: #f2f2f2;
   }
@@ -82,45 +69,64 @@
   <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
 </header>
 
-<h1>{% trans "Subject Administration" %}</h1>
-<a href="{% url 'add_subject' %}">{% trans "Add New Subject" %}</a><br><br>
+<main>
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
-<table>
-  <tr>
-    <th>{% trans "Name" %}</th>
-    <th>{% trans "Code" %}</th>
-    <th>{% trans "Program" %}</th>
-    <th>{% trans "ECTS" %}</th>
-    <th>{% trans "Semester – Regular" %}</th>
-    <th>{% trans "Semester – Irregular" %}</th>
-    <th>{% trans "Elective" %}</th>
-    <th>{% trans "Professor" %}</th>
-    <th></th>
-    <th></th>
-  </tr>
-  {% for subject in subjects %}
+  <h1>{% trans "Subject Administration" %}</h1>
+  <a href="{% url 'add_subject' %}">{% trans "Add New Subject" %}</a><br><br>
+
+  <table>
     <tr>
-      <td>{{ subject.name }}</td>
-      <td>{{ subject.kod }}</td>
-      <td>{{ subject.program }}</td>
-      <td>{{ subject.ects }}</td>
-      <td>{{ subject.sem_red }}</td>
-      <td>{{ subject.sem_izv }}</td>
-      <td>
-        {% if subject.izborni == '2' %}
-          {% trans "Yes" %}
-        {% else %}
-          {% trans "No" %}
-        {% endif %}
-      </td>  
-      <td>{{ subject.nositelj.first_name }} {{ subject.nositelj.last_name }}</td>
-      <td>
-        <a href="{% url 'subject_update' subject.id %}">{% trans "Update" %}</a>
-      </td>
-      <td>
-        <a href="{% url 'students_subject' subject.id %}">{% trans "View All Students" %}</a>
-      </td>
+      <th>{% trans "Name" %}</th>
+      <th>{% trans "Code" %}</th>
+      <th>{% trans "Program" %}</th>
+      <th>{% trans "ECTS" %}</th>
+      <th>{% trans "Semester – Regular" %}</th>
+      <th>{% trans "Semester – Irregular" %}</th>
+      <th>{% trans "Elective" %}</th>
+      <th>{% trans "Horario" %}</th>
+      <th>{% trans "Professor" %}</th>
+      <th></th>
+      <th></th>
     </tr>
-  {% endfor %}
-</table>
+    {% for subject in subjects %}
+      <tr>
+        <td>{{ subject.name }}</td>
+        <td>{{ subject.kod }}</td>
+        <td>{{ subject.program }}</td>
+        <td>{{ subject.ects }}</td>
+        <td>{{ subject.sem_red }}</td>
+        <td>{{ subject.sem_izv }}</td>
+        <td>
+          {% if subject.izborni == '2' %}
+            {% trans "Yes" %}
+          {% else %}
+            {% trans "No" %}
+          {% endif %}
+        </td>
+        <td>{{ subject.horario }}</td>
+        <td>
+          {% if subject.nositelj %}
+            {{ subject.nositelj.first_name }} {{ subject.nositelj.last_name }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          <a href="{% url 'subject_update' subject.id %}">{% trans "Update" %}</a>
+        </td>
+        <td>
+          <a href="{% url 'students_subject' subject.id %}">{% trans "View All Students" %}</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</main>
 {% endblock %}
+```
